@@ -70,7 +70,7 @@ Interactive Excel Dashboard
 
 ---
 
-# File 01: Raw Data
+# Sheet 01:Raw Data
 
 The first sheet contains the original Netflix dataset used for this project.
 
@@ -97,7 +97,7 @@ The raw dataset was used as the starting point for the analysis. No additional h
 
 ---
 
-# File 02: Missing Data Analysis
+# Sheet 2: Missing Data Analysis
 
 The second sheet focuses on data quality analysis.
 
@@ -144,7 +144,7 @@ Not all columns with missing values were required for the final dashboard analys
 
 ---
 
-# File 03: Data Transformation
+# Sheet 3 : Data Transformation
 
 After analyzing the raw data and missing values, additional helper columns were created to simplify the analysis.
 
@@ -261,7 +261,7 @@ The following functions and features were used during the project:
 
 ---
 
-# Pivot Table Analysis
+# Sheet 4-7 :Pivot Table Analysis
 
 Pivot Tables were created to summarize the Netflix dataset and perform the main analysis.
 
@@ -274,7 +274,7 @@ Pivot Tables were created to summarize the Netflix dataset and perform the main 
 
 ---
 
-# Dashboard Overview
+# Sheet 8: Dashboard Overview
 
 The final dashboard was created using Microsoft Excel.
 
