@@ -23,7 +23,7 @@ The main objectives of this project are:
 
 ---
 
-# Dataset Information
+# Dataset Information:
 
 The dataset contains information about Netflix Movies and TV Shows.
 
