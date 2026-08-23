@@ -420,28 +420,6 @@ Netflix-Data-Analysis/
 
 ---
 
-# Dashboard Preview
-
-Add your final dashboard screenshot to the `images` folder.
-
-Then display it in GitHub using:
-
-```markdown
-## Dashboard Preview
-
-![Netflix Data Analysis Dashboard](images/netflix_dashboard.png)
-```
-
-You can also add the project workflow image:
-
-```markdown
-## Project Workflow
-
-![Project Workflow](images/project_workflow.png)
-```
-
----
-
 # Conclusion
 
 This project demonstrates how Microsoft Excel can be used for end-to-end data analysis, including data understanding, missing value analysis, data transformation, Pivot Table analysis, data visualization, and interactive dashboard development.
