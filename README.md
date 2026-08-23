@@ -2,17 +2,9 @@
 
 ## Project Overview
 
-This project analyzes the Netflix content catalog using Microsoft Excel. The objective is to transform raw Netflix data into meaningful insights through data cleaning, missing value analysis, data transformation, Pivot Tables, Pivot Charts, KPIs, and an interactive dashboard.
+This project analyzes the Netflix content catalog using **Microsoft Excel**. The objective is to explore the distribution of Movies and TV Shows, analyze content release trends, understand audience rating categories, examine content age and movie length, and build an interactive dashboard.
 
-The project follows a structured Excel-based data analysis workflow:
-
-1. Raw Data
-2. Missing Data Analysis
-3. Data Transformation
-4. Pivot Table Analysis
-5. Dashboard Development
-
-The final dashboard provides insights into the distribution of Movies and TV Shows, content release trends, rating categories, and content age.
+The analysis was performed using **Excel functions, data cleaning, data transformation, Pivot Tables, Pivot Charts, KPI cards, and slicers**.
 
 ---
 
@@ -21,28 +13,49 @@ The final dashboard provides insights into the distribution of Movies and TV Sho
 The main objectives of this project are:
 
 * Analyze the distribution of Movies and TV Shows.
-* Study the number of titles released over different years.
+* Study Netflix content release trends over the years.
 * Analyze content based on audience rating categories.
-* Categorize content based on age and duration.
-* Identify missing values and check for duplicate records.
-* Transform raw data into meaningful categories.
-* Create Pivot Tables and Pivot Charts for analysis.
-* Develop KPI cards for a quick overview.
-* Build an interactive Excel dashboard using slicers.
+* Compare New, Recent, and Old content across rating categories.
+* Analyze content distribution based on movie length.
+* Compare content type across different movie length categories.
+* Compare content age across different movie length categories.
+* Build an interactive Excel dashboard.
+
+---
+
+# Dataset Information
+
+The dataset contains information about Netflix Movies and TV Shows.
+
+The original dataset contains the following columns:
+
+| Column       | Description                                |
+| ------------ | ------------------------------------------ |
+| show_id      | Unique identifier for each title           |
+| type         | Type of content: Movie or TV Show          |
+| title        | Name of the Movie or TV Show               |
+| director     | Director of the content                    |
+| cast         | Cast members                               |
+| country      | Country where the content was produced     |
+| date_added   | Date when the content was added to Netflix |
+| release_year | Original release year                      |
+| rating       | Audience rating                            |
+| duration     | Duration of the Movie or TV Show           |
+| listed_in    | Genre or category                          |
+| description  | Brief description of the content           |
 
 ---
 
 # Tools and Technologies
 
 * Microsoft Excel
-* Excel Functions
-* Data Cleaning
-* Data Transformation
-* Conditional Formatting
 * Pivot Tables
 * Pivot Charts
+* Excel Functions
+* Conditional Formatting
 * Slicers
-* Dashboard Development
+* Data Cleaning
+* Data Transformation
 
 ---
 
@@ -59,138 +72,89 @@ Duplicate Check
         ↓
 Data Transformation
         ↓
-Helper Columns
+Helper Columns Creation
+        ├── Content Age
+        ├── Movie Length
+        ├── Rating Category
+        └── Movie Age
         ↓
 Pivot Table Analysis
+        ├── Movies vs TV Shows
+        ├── Content by Release Year
+        ├── Category Split with Content Age
+        ├── Rating Category Distribution
+        ├── Content Distribution by Movie Length
+        ├── Content Type by Movie Length
+        └── Content Age by Movie Length
         ↓
-Pivot Charts and KPIs
+Data Visualization
         ↓
-Interactive Excel Dashboard
+KPI Development
+        ↓
+Slicer Integration
+        ↓
+Interactive Netflix Dashboard
 ```
 
 ---
 
-# Sheet 01:Raw Data
+# Data Cleaning and Missing Value Analysis
 
-The first sheet contains the original Netflix dataset used for this project.
-
-Each row represents one Netflix title.
-
-## Original Dataset Columns
-
-| Column         | Description                                                 |
-| -------------- | ----------------------------------------------------------- |
-| `show_id`      | Unique identifier for each Netflix title                    |
-| `type`         | Type of content: Movie or TV Show                           |
-| `title`        | Name of the Movie or TV Show                                |
-| `director`     | Name of the director                                        |
-| `cast`         | Cast members associated with the title                      |
-| `country`      | Country or countries where the content was produced         |
-| `date_added`   | Date when the title was added to Netflix                    |
-| `release_year` | Original release year of the title                          |
-| `rating`       | Audience rating or maturity classification                  |
-| `duration`     | Movie duration in minutes or number of seasons for TV Shows |
-| `listed_in`    | Genre or categories associated with the title               |
-| `description`  | Brief description of the content                            |
-
-The raw dataset was used as the starting point for the analysis. No additional helper columns or transformed categories were present at this stage.
-
----
-
-# Sheet 2: Missing Data Analysis
-
-The second sheet focuses on data quality analysis.
-
-The dataset was checked for duplicate records and missing values before proceeding with further analysis.
-
-## Duplicate Check
-
-The dataset was checked for duplicate records.
-
-**Result: No duplicate records were found.**
-
-## Missing Value Summary
+The dataset was first analyzed to identify missing values and duplicate records.
 
 The following missing values were identified:
 
 | Column     | Missing Count |
 | ---------- | ------------: |
-| Director   |         2,634 |
+| Director   |          2634 |
 | Cast       |           825 |
 | Country    |           831 |
 | Date Added |            10 |
 | Rating     |             4 |
 | Duration   |             3 |
 
-The highest number of missing values was found in the `director` column, followed by `country` and `cast`.
+No duplicate records were found in the dataset.
 
 ## Excel Features Used
 
 ### COUNTBLANK()
 
-The `COUNTBLANK()` function was used to count blank cells in each relevant column.
+The `COUNTBLANK()` function was used to count missing values in selected columns.
 
 ### Conditional Formatting
 
-Conditional Formatting was used to highlight blank cells and make missing values easier to identify before analysis.
-
-## Missing Data Handling
-
-Not all columns with missing values were required for the final dashboard analysis.
-
-* Missing values in `director`, `cast`, and `country` were not the primary focus of the dashboard.
-* Missing ratings were grouped into the **No Rating** category during data transformation.
-* The small number of missing values in `date_added` and `duration` were considered during analysis.
+Conditional Formatting was used to highlight missing or blank values, making it easier to identify data quality issues before analysis.
 
 ---
 
-# Sheet 3 : Data Transformation
+# Data Transformation
 
-After analyzing the raw data and missing values, additional helper columns were created to simplify the analysis.
-
-The following columns were added:
-
-* Content Age
-* Movie Length
-* Rating Category
-* Movie Age
-
----
+Additional helper columns were created to make the dataset easier to analyze.
 
 ## 1. Content Age
 
-The `release_year` column was used to classify titles into three categories.
+The `release_year` column was used to categorize content into three groups:
 
-| Release Year   | Content Age |
-| -------------- | ----------- |
-| 2019 and later | New         |
-| 2010 to 2018   | Recent      |
-| Before 2010    | Old         |
-
-This transformation was used to compare the age of Netflix content across different rating categories.
+| Condition            | Category |
+| -------------------- | -------- |
+| Release Year >= 2019 | New      |
+| Release Year >= 2010 | Recent   |
+| Otherwise            | Old      |
 
 ---
 
 ## 2. Movie Length
 
-The `duration` column contains different formats for Movies and TV Shows.
+The `duration` column was categorized into different content length groups.
 
-Examples:
+| Duration        | Category            |
+| --------------- | ------------------- |
+| Contains season | Series/Multi-Series |
+| <= 120 min      | Medium              |
+| > 120 min       | Long                |
+| < 60 min        | Short               |
 
-* `90 min`
-* `120 min`
-* `2 Seasons`
-
-The duration values were categorized as follows:
-
-| Duration Condition    | Result              |
-| --------------------- | ------------------- |
-| Contains Season       | Series/Multi-Series |
-| Less than 60 minutes  | Short               |
-| 60 to 120 minutes     | Medium              |
-| More than 120 minutes | Long                |
-
-This transformation made it easier to group Netflix content according to duration.
+These categories were used to analyze the distribution of Netflix content based on duration and format.
 
 ---
 
@@ -198,7 +162,7 @@ This transformation made it easier to group Netflix content according to duratio
 
 The original rating values were grouped into broader audience categories.
 
-| Original Rating       | Rating Category |
+| Rating                | Rating Category |
 | --------------------- | --------------- |
 | TV-MA, R, NC-17       | Adults          |
 | TV-14, PG-13          | Teens           |
@@ -206,98 +170,48 @@ The original rating values were grouped into broader audience categories.
 | TV-Y, TV-Y7, TV-Y7-FV | Kids            |
 | NR, UR, No Rating     | No Rating       |
 
-This transformation simplified the rating analysis and made the dashboard easier to interpret.
+This transformation simplified the analysis of audience categories.
 
 ---
 
 ## 4. Movie Age
 
-A `Movie Age` column was created to calculate how old each title is based on its release year.
-
-The Excel formula used was:
+A Movie Age column was created to calculate how old a title is based on its release year.
 
 ```excel
-=YEAR(TODAY())-[@[release_year]]
+=YEAR(TODAY())-[@release_year]
 ```
 
-This calculates the difference between the current year and the title's release year.
-
-For example:
-
-| Release Year | Movie Age |
-| ------------ | --------: |
-| 2020         |         6 |
-| 2015         |        11 |
-| 2010         |        16 |
-
-The calculation is dynamic because it uses the `TODAY()` function and updates automatically each year.
+This column was used as an additional transformation for analyzing the age of Netflix content.
 
 ---
 
-# Data Transformation Summary
+# Pivot Table Analysis
 
-| Helper Column   | Source Column  | Purpose                                        |
-| --------------- | -------------- | ---------------------------------------------- |
-| Content Age     | `release_year` | Categorize titles as New, Recent, or Old       |
-| Movie Length    | `duration`     | Categorize content by duration                 |
-| Rating Category | `rating`       | Group ratings into broader audience categories |
-| Movie Age       | `release_year` | Calculate the age of each title                |
+Pivot Tables were created to summarize the Netflix dataset and perform different types of analysis.
 
----
-
-# Excel Functions Used
-
-The following functions and features were used during the project:
-
-* `COUNTBLANK()`
-* `IF()` / Nested `IF()`
-* `SEARCH()`
-* `YEAR()`
-* `TODAY()`
-* Conditional Formatting
-* Pivot Tables
-* Pivot Charts
-* Slicers
-
----
-
-# Sheet 4-7 :Pivot Table Analysis
-
-Pivot Tables were created to summarize the Netflix dataset and perform the main analysis.
-
-| Analysis                        | Rows / Categories               | Values         | Purpose                                                        |
-| ------------------------------- | ------------------------------- | -------------- | -------------------------------------------------------------- |
-| Movies vs TV Shows              | Type                            | Count of Type  | Compare the distribution of Movies and TV Shows                |
-| Content by Release Year         | Release Year                    | Count of Title | Analyze content release trends                                 |
-| Category Split with Content Age | Rating Category and Content Age | Count of Title | Compare New, Recent, and Old content across rating categories  |
-| Rating Category Distribution    | Rating Category                 | Count of Title | Analyze the distribution of content across audience categories |
-
----
-
-# Sheet 8: Dashboard Overview
-
-The final dashboard was created using Microsoft Excel.
-
-It combines:
-
-* KPI Cards
-* Pivot Charts
-* Interactive Slicers
-
-The dashboard provides a summary of the Netflix dataset and allows users to interact with the visualizations using filters.
+| Analysis                             | Rows            | Columns     | Values         | Purpose                                                                       |
+| ------------------------------------ | --------------- | ----------- | -------------- | ----------------------------------------------------------------------------- |
+| Movies vs TV Shows                   | Type            | —           | Count of Title | Compare the distribution of Movies and TV Shows                               |
+| Content by Release Year              | Release Year    | —           | Count of Title | Analyze content release trends over the years                                 |
+| Category Split with Content Age      | Rating Category | Content Age | Count of Title | Compare New, Recent, and Old content across rating categories                 |
+| Rating Category Distribution         | Rating Category | —           | Count of Title | Analyze content distribution across audience categories                       |
+| Content Distribution by Movie Length | Movie Length    | —           | Count of Title | Analyze the overall distribution of content based on movie length             |
+| Content Type by Movie Length         | Movie Length    | Type        | Count of Title | Compare Movies and TV Shows across different movie length categories          |
+| Content Age by Movie Length          | Movie Length    | Content Age | Count of Title | Compare New, Recent, and Old content across different movie length categories |
 
 ---
 
 # Dashboard KPIs
 
-The dashboard includes the following KPI cards:
+The dashboard includes the following key performance indicators:
 
-| KPI            | Description                                                      |
-| -------------- | ---------------------------------------------------------------- |
-| Total Titles   | Displays the total number of titles in the dataset               |
-| Top Category   | Highlights the category with the highest number of titles        |
-| Recent Content | Provides an overview of recently released content                |
-| Top Rating     | Identifies the rating category with the highest number of titles |
+| KPI          | Description                                        |
+| ------------ | -------------------------------------------------- |
+| Total Titles | Total number of Movies and TV Shows in the dataset |
+| Top Category | Rating category with the highest number of titles  |
+| Start Date   | Earliest release year available in the dataset     |
+| End Date     | Latest release year available in the dataset       |
 
 ---
 
@@ -305,52 +219,39 @@ The dashboard includes the following KPI cards:
 
 ## 1. Movies vs TV Shows
 
-A Doughnut Chart was used to compare the distribution of Movies and TV Shows.
+A Doughnut Chart is used to compare the distribution of Movies and TV Shows in the Netflix catalog.
 
-The analysis shows that:
-
-* Movies account for approximately 70% of the dataset.
-* TV Shows account for approximately 30% of the dataset.
-
-This indicates that Movies make up the majority of titles in the Netflix dataset.
+This visualization shows that Movies represent the majority of titles, while TV Shows account for a smaller portion.
 
 ---
 
 ## 2. Content by Release Year
 
-A Line Chart was used to visualize the number of titles released across different years.
+A Line Chart is used to analyze the number of titles released across different years.
 
-The chart shows significant growth in the number of titles released in recent years, particularly after 2018.
+This visualization helps identify trends and growth in Netflix's content catalog over time.
 
 ---
 
 ## 3. Category Split with Content Age
 
-A Clustered Column Chart compares rating categories with Content Age.
+A Clustered Column Chart compares different rating categories with Content Age.
 
-The Content Age categories are:
+The content is divided into:
 
 * New
 * Recent
 * Old
 
-The rating categories include:
-
-* Adults
-* Teens
-* Family
-* Kids
-* No Rating
-
-This visualization helps analyze how the age of content varies across different audience categories.
+This visualization shows how content age varies across Adults, Teens, Family, Kids, and No Rating categories.
 
 ---
 
 ## 4. Rating Category Distribution
 
-A Pie Chart was used to visualize the distribution of Netflix content across audience rating categories.
+A Pie Chart displays the distribution of Netflix content across different audience categories.
 
-The analysis includes:
+The categories include:
 
 * Adults
 * Teens
@@ -358,21 +259,72 @@ The analysis includes:
 * Kids
 * No Rating
 
-Adult-rated content represents the largest share of the dataset.
+This visualization helps identify the largest audience category in the Netflix catalog.
+
+---
+
+## 5. Content Distribution by Movie Length
+
+A chart is used to analyze the total number of titles across different movie length categories.
+
+The categories include:
+
+* Long
+* Medium
+* Series/Multi-Series
+* Short
+
+This visualization helps identify the most common content length category in the dataset.
+
+---
+
+## 6. Content Type by Movie Length
+
+A Pivot Chart compares Movies and TV Shows across different movie length categories.
+
+The analysis includes:
+
+* Long
+* Medium
+* Series/Multi-Series
+* Short
+
+This visualization helps identify how content type varies based on movie length.
+
+---
+
+## 7. Content Age by Movie Length
+
+A 100% Stacked Column Chart compares the percentage distribution of content age across different movie length categories.
+
+The content age categories include:
+
+* New
+* Recent
+* Old
+
+The movie length categories include:
+
+* Long
+* Medium
+* Series/Multi-Series
+* Short
+
+This visualization helps understand how the age distribution of Netflix content varies based on its duration or format.
 
 ---
 
 # Interactive Features
 
-The dashboard includes slicers that allow users to dynamically filter the analysis.
+The dashboard includes interactive slicers that allow users to dynamically filter the analysis.
 
 ## Release Year Slicer
 
-Users can select one or multiple release years to explore content from specific periods.
+Allows users to filter the dashboard based on one or multiple release years.
 
 ## Content Age Slicer
 
-Users can filter the dashboard based on:
+Allows users to filter the dashboard based on:
 
 * New
 * Recent
@@ -384,37 +336,50 @@ The connected Pivot Tables and Pivot Charts update dynamically based on the sele
 
 # Key Insights
 
-1. Movies account for approximately 70% of the Netflix dataset, while TV Shows account for approximately 30%.
+1. **Movies dominate the catalog**, accounting for approximately 70% of titles.
 
-2. The number of titles increased significantly in recent years, with strong growth after 2018.
+2. **Content releases grew rapidly after 2018.**
 
-3. Adult-rated content represents the largest audience category in the dataset.
+3. **Adult-rated content has the largest share**, followed by Teen and Family content.
 
-4. Teen and Family content also make up a significant portion of the Netflix catalog.
+4. **Recent content is more common than older content** across most rating categories.
 
-5. Kids and No Rating categories represent a smaller share of the dataset.
+5. **Medium-length content is the most common**, while short content represents a smaller portion of the catalog.
 
-6. Recent content is prominent across major rating categories.
+6. **Content distribution varies by type and age**, with Movies and TV Shows showing different patterns across movie length categories.
+
+---
+
+# Dashboard Design
+
+The dashboard uses a Netflix-inspired color theme based on:
+
+* Black background
+* Netflix Red for highlights and primary data
+* White and light gray for contrast
+* Consistent borders, chart titles, and KPI cards
+
+The dashboard follows a structured layout containing:
+
+* 4 KPI Cards
+* 7 Pivot Charts
+* Key Insights Panel
+* Release Year Slicer
+* Content Age Slicer
 
 ---
 
 # Dataset Limitations
 
-This project has the following limitations:
-
 1. The dataset is a static snapshot and may not represent Netflix's latest catalog.
 
-2. Missing values are present in columns such as Director, Cast, Country, Date Added, Rating, and Duration.
+2. Some records contain multiple countries and genres in a single cell, limiting detailed country-wise and genre-wise analysis.
 
-3. Some titles contain multiple countries in a single cell, making detailed country-level analysis more difficult.
+3. Missing values are present in columns such as Director, Cast, Country, Date Added, Rating, and Duration.
 
-4. Some titles contain multiple genres in a single cell, which limits detailed genre analysis without additional transformation.
+4. The dataset represents content from multiple countries and provides an overall view of the Netflix catalog.
 
-5. The analysis represents the overall dataset and is not specific to a particular country.
-
-6. The Movie Age calculation is dynamic because it uses the current year.
-
-7. Excel is suitable for small to medium-sized datasets but may have limitations when working with very large datasets.
+5. The analysis was performed using Microsoft Excel, which is suitable for small to medium-sized datasets but has limitations when working with large-scale data.
 
 ---
 
@@ -422,40 +387,65 @@ This project has the following limitations:
 
 Possible future improvements include:
 
-1. Build a more advanced dashboard using Power BI or Tableau.
-2. Perform additional analysis using SQL.
-3. Use Python and Pandas for advanced data cleaning and exploratory analysis.
-4. Separate multiple countries and genres into individual records.
-5. Add country-wise and genre-wise analysis.
-6. Analyze directors and cast members.
-7. Use an updated dataset for more recent insights.
-8. Build a recommendation system using Machine Learning.
+1. Build a more advanced interactive dashboard using Power BI or Tableau.
 
+2. Perform detailed data analysis using SQL.
+
+3. Use Python and Pandas for advanced data cleaning and exploratory data analysis.
+
+4. Separate multiple countries and genres for more detailed analysis.
+
+5. Integrate updated Netflix data for more recent insights.
+
+6. Develop a Machine Learning recommendation system based on user preferences and content genres.
+
+---
+
+# Project Structure
+
+```text
+Netflix-Data-Analysis/
+│
+├── README.md
+│
+├── data/
+│   └── netflix_titles.csv
+│
+├── excel/
+│   └── Netflix_Data_Analysis.xlsx
+│
+└── images/
+    ├── dashboard.png
+```
+
+---
+
+# Dashboard Preview
+
+Add your final dashboard screenshot to the `images` folder.
+
+Then display it in GitHub using:
+
+```markdown
+## Dashboard Preview
+
+![Netflix Data Analysis Dashboard](images/netflix_dashboard.png)
+```
+
+You can also add the project workflow image:
+
+```markdown
+## Project Workflow
+
+![Project Workflow](images/project_workflow.png)
+```
 
 ---
 
 # Conclusion
 
-This project demonstrates a complete data analysis workflow using Microsoft Excel.
+This project demonstrates how Microsoft Excel can be used for end-to-end data analysis, including data understanding, missing value analysis, data transformation, Pivot Table analysis, data visualization, and interactive dashboard development.
 
-The project involved:
+The raw Netflix dataset was transformed into meaningful insights using helper columns, Pivot Tables, Pivot Charts, KPI cards, and slicers. The final dashboard provides an interactive view of Netflix content based on content type, release year, audience rating, content age, and movie length.
 
-* Understanding the raw dataset
-* Checking for duplicate records
-* Performing missing value analysis
-* Using `COUNTBLANK()` and Conditional Formatting
-* Transforming raw data into meaningful categories
-* Creating helper columns
-* Calculating Movie Age
-* Creating Content Age categories
-* Categorizing Movie Length
-* Grouping ratings into audience categories
-* Creating Pivot Tables
-* Building Pivot Charts
-* Developing KPI cards
-* Adding interactive slicers
-* Designing an interactive Excel dashboard
-
-The raw Netflix dataset was transformed into an interactive dashboard that provides insights into content type distribution, release trends, audience categories, and content age.
-
-This project demonstrates practical skills in **Data Cleaning, Data Transformation, Excel Functions, Pivot Tables, Data Visualization, and Dashboard Development**.
+This project serves as a foundation for performing more advanced analysis using **SQL, Python, Power BI, Tableau, and Machine Learning**.
