@@ -415,7 +415,9 @@ Netflix-Data-Analysis/
 │   └── Netflix_Data_Analysis.xlsx
 │
 └── images/
-    ├── dashboard.png
+   └── dashboard.png
+   └── dashboard(2).png
+    
 ```
 
 ---
